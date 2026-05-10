@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>İngilizce Deyimler</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --surface-2: #fafafa;
+      --border: rgba(0,0,0,0.07);
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --text-tertiary: #aeaeb2;
+      --accent: #1d1d1f;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.05);
+      --radius: 18px;
+      --radius-sm: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: rgba(245,245,247,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 24px;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .logo span {
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    /* ── SEARCH ── */
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      max-width: 340px;
+    }
+
+    .search-wrap svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-tertiary);
+      pointer-events: none;
+    }
+
+    #search {
+      width: 100%;
+      padding: 9px 14px 9px 36px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      color: var(--text-primary);
+      outline: none;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    #search::placeholder { color: var(--text-tertiary); }
+
+    #search:focus {
+      border-color: rgba(0,0,0,0.2);
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.05), var(--shadow-sm);
+    }
+
+    .badge {
+      background: var(--text-primary);
+      color: #fff;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    /* ── MAIN ── */
+    main { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 20px;
+    }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 28px 24px;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.22s cubic-bezier(.25,.46,.45,.94),
+                  box-shadow 0.22s cubic-bezier(.25,.46,.45,.94),
+                  border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0,0,0,0.12);
+    }
+
+    .card:active { transform: translateY(-1px); }
+
+    .card-number {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.06em;
+    }
+
+    .card-en {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .card-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 2px 0;
+    }
+
+    .card-tr {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .card-arrow {
+      position: absolute;
+      right: 22px;
+      bottom: 22px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-tertiary);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .card:hover .card-arrow {
+      background: var(--text-primary);
+      color: #fff;
+    }
+
+    /* ── NO RESULTS ── */
+    .no-results {
+      text-align: center;
+      padding: 80px 24px;
+      color: var(--text-tertiary);
+      display: none;
+    }
+
+    .no-results .icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .no-results p { font-size: 0.95rem; }
+
+    /* ── DETAIL VIEW ── */
+    #detail-view {
+      display: none;
+      min-height: 100vh;
+      background: var(--bg);
+      flex-direction: column;
+    }
+
+    #detail-view.active { display: flex; }
+
+    .detail-header {
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(245,245,247,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: background 0.18s, box-shadow 0.18s;
+      text-decoration: none;
+    }
+
+    .back-btn:hover {
+      background: var(--text-primary);
+      color: #fff;
+      border-color: var(--text-primary);
+    }
+
+    .detail-progress {
+      margin-left: auto;
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+
+    /* ── FLASHCARD ── */
+    .flashcard-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+
+    .flashcard {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow-lg);
+      width: 100%;
+      max-width: 680px;
+      padding: 64px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: cardIn 0.4s cubic-bezier(.25,.46,.45,.94) both;
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(24px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .flashcard::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,0,0,0.025) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .flashcard-index {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 36px;
+    }
+
+    .flashcard-en {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: var(--text-primary);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+
+    .flashcard-sep {
+      width: 40px;
+      height: 2px;
+      background: var(--text-tertiary);
+      border-radius: 2px;
+      margin: 0 auto 24px;
+      opacity: 0.35;
+    }
+
+    .flashcard-tr {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── NAV BUTTONS ── */
+    .nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 0 24px 48px;
+    }
+
+    .nav-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      color: var(--text-primary);
+      transition: background 0.18s, transform 0.15s, box-shadow 0.18s;
+    }
+
+    .nav-btn:hover {
+      background: var(--text-primary);
+      color: #fff;
+      transform: scale(1.06);
+      box-shadow: var(--shadow-md);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .nav-hint {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+      text-align: center;
+      padding-bottom: 24px;
+    }
+
+    /* ── LIST VIEW ── */
+    #list-view { animation: fadeIn 0.3s ease both; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .header-inner { height: 54px; }
+      main { padding: 28px 16px 60px; }
+      .grid { grid-template-columns: 1fr; gap: 12px; }
+      .card { padding: 22px 22px 20px; }
+      .flashcard { padding: 48px 28px; border-radius: 22px; }
+      .flashcard-en { font-size: 1.8rem; }
+      .logo span { display: none; }
+    }
+
+    @media (max-width: 400px) {
+      .badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════
+     LIST VIEW
+════════════════════════════════ -->
+<div id="list-view">
+  <header>
+    <div class="header-inner">
+      <div class="logo">Deyimler <span>/ Idioms</span></div>
+      <div class="search-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input id="search" type="search" placeholder="Ara…" autocomplete="off" />
+      </div>
+      <div class="badge" id="count-badge">30 deyim</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="section-label">İngilizce Deyimler</div>
+    <div class="grid" id="grid"></div>
+    <div class="no-results" id="no-results">
+      <div class="icon">🔍</div>
+      <p>Aradığınız deyim bulunamadı.</p>
+    </div>
+  </main>
+</div>
+
+<!-- ════════════════════════════════
+     DETAIL VIEW
+════════════════════════════════ -->
+<div id="detail-view">
+  <div class="detail-header">
+    <button class="back-btn" id="back-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Ana Sayfaya Dön
+    </button>
+    <div class="detail-progress" id="detail-progress"></div>
+  </div>
+
+  <div class="flashcard-wrap">
+    <div class="flashcard">
+      <div class="flashcard-index" id="fc-index"></div>
+      <div class="flashcard-en" id="fc-en"></div>
+      <div class="flashcard-sep"></div>
+      <div class="flashcard-tr" id="fc-tr"></div>
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <button class="nav-btn" id="prev-btn" title="Önceki">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+    <button class="nav-btn" id="next-btn" title="Sonraki">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav-hint">← → tuşlarıyla gezinebilirsiniz</div>
+</div>
+
+<script>
+  const IDIOMS = [
+    { id: "reap-what-you-sow",               en: "You reap what you sow",                        tr: "Ne ekersen onu biçersin" },
+    { id: "money-doesnt-grow-on-trees",       en: "Money doesn't grow on trees",                  tr: "Para ağaçta yetişmez" },
+    { id: "curiosity-killed-the-cat",         en: "Curiosity killed the cat",                     tr: "Merak kediyi öldürür" },
+    { id: "i-am-all-ears",                    en: "I am all ears",                                tr: "Kulağım sende" },
+    { id: "chain-weakest-link",               en: "A chain is as strong as its weakest link",     tr: "Zincir en zayıf halkası kadar güçlüdür" },
+    { id: "two-heads-better-than-one",        en: "Two heads are better than one",                tr: "Bir elin nesi var iki elin sesi var" },
+    { id: "picture-worth-thousand-words",     en: "A picture is worth a thousand words",          tr: "Bir resim bin kelimeye bedeldir" },
+    { id: "watched-pot-never-boils",          en: "A watched pot never boils",                    tr: "Başında beklenen su kaynamaz" },
+    { id: "grass-greener-other-side",         en: "The grass is greener on the other side",       tr: "Komşunun tavuğu komşuya kaz görünür" },
+    { id: "dont-judge-book-by-cover",         en: "Don't judge a book by its cover",              tr: "Kitabı kapağından yargılama" },
+    { id: "be-on-the-same-page",              en: "Be on the same page",                          tr: "Aynı fikirde olmak" },
+    { id: "miss-the-boat",                    en: "Miss the boat",                                tr: "Fırsatı kaçırmak" },
+    { id: "let-it-go",                        en: "Let it go",                                    tr: "Peşini bırakmak" },
+    { id: "keep-ones-mouth-shut",             en: "Keep one's mouth shut",                        tr: "Dilini tutmak" },
+    { id: "be-on-the-same-boat",              en: "Be on the same boat",                          tr: "Aynı gemide olmak" },
+    { id: "dont-put-eggs-one-basket",         en: "Don't put all your eggs in one basket",        tr: "Tüm yumurtalarını aynı sepete koymak" },
+    { id: "time-is-money",                    en: "Time is money",                                tr: "Zaman paradır" },
+    { id: "break-the-ice",                    en: "Break the ice",                                tr: "Buzu kırmak" },
+    { id: "when-pigs-fly",                    en: "When pigs fly",                                tr: "Balık kavağa çıkınca" },
+    { id: "dont-cry-over-spilled-milk",       en: "Don't cry over spilled milk",                  tr: "Atı alan Üsküdar'ı geçti" },
+    { id: "out-of-sight-out-of-mind",         en: "Out of sight, out of mind",                    tr: "Gözden uzak olan gönülden uzaktır" },
+    { id: "every-cloud-silver-lining",        en: "Every cloud has a silver lining",              tr: "Her işte bir hayır vardır" },
+    { id: "pen-mightier-than-sword",          en: "The pen is mightier than the sword",           tr: "Kalem kılıçtan keskindir" },
+    { id: "devil-in-the-detail",              en: "The devil is in the detail",                   tr: "Şeytan detaylarda gizlidir" },
+    { id: "go-by-the-rules",                  en: "Go by the rules",                              tr: "Kitabına uydurmak" },
+    { id: "go-on-track",                      en: "Go on track",                                  tr: "Rayında gitmek" },
+    { id: "be-all-over-the-place",            en: "Be all over the place",                        tr: "Kafası karışmak" },
+    { id: "go-off-track",                     en: "Go off track",                                 tr: "Konuyu dağıtmak" },
+    { id: "try-ones-luck",                    en: "Try one's luck",                               tr: "Şansını denemek" },
+    { id: "buy-time",                         en: "Buy time",                                     tr: "Zaman kazanmak" },
+  ];
+
+  // ── DOM refs
+  const listView   = document.getElementById('list-view');
+  const detailView = document.getElementById('detail-view');
+  const grid       = document.getElementById('grid');
+  const noResults  = document.getElementById('no-results');
+  const searchEl   = document.getElementById('search');
+  const countBadge = document.getElementById('count-badge');
+  const backBtn    = document.getElementById('back-btn');
+  const prevBtn    = document.getElementById('prev-btn');
+  const nextBtn    = document.getElementById('next-btn');
+  const fcIndex    = document.getElementById('fc-index');
+  const fcEn       = document.getElementById('fc-en');
+  const fcTr       = document.getElementById('fc-tr');
+  const detailProg = document.getElementById('detail-progress');
+
+  let currentIndex = 0;
+
+  // ── Render grid
+  function renderGrid(items) {
+    grid.innerHTML = '';
+    const visible = items.length;
+    countBadge.textContent = visible + ' deyim';
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+
+    items.forEach((item, i) => {
+      const globalIdx = IDIOMS.indexOf(item);
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="card-number">${String(globalIdx + 1).padStart(2,'0')}</div>
+        <div class="card-en">${item.en}</div>
+        <div class="card-divider"></div>
+        <div class="card-tr">${item.tr}</div>
+        <div class="card-arrow">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </div>
+      `;
+      card.addEventListener('click', () => openDetail(globalIdx));
+      grid.appendChild(card);
+    });
+  }
+
+  // ── Open detail
+  function openDetail(index) {
+    currentIndex = index;
+    showFlashcard();
+    listView.style.display = 'none';
+    detailView.classList.add('active');
+    // Push URL state
+    const url = new URL(window.location);
+    url.searchParams.set('id', IDIOMS[index].id);
+    history.pushState({ id: IDIOMS[index].id }, '', url);
+  }
+
+  function showFlashcard() {
+    const item = IDIOMS[currentIndex];
+    fcIndex.textContent = `Deyim ${currentIndex + 1} / ${IDIOMS.length}`;
+    fcEn.textContent    = item.en;
+    fcTr.textContent    = item.tr;
+    detailProg.textContent = `${currentIndex + 1} / ${IDIOMS.length}`;
+    prevBtn.disabled    = currentIndex === 0;
+    nextBtn.disabled    = currentIndex === IDIOMS.length - 1;
+    // Trigger re-animation
+    const fc = document.querySelector('.flashcard');
+    fc.style.animation = 'none';
+    fc.offsetHeight; // reflow
+    fc.style.animation = '';
+    // Update URL silently
+    const url = new URL(window.location);
+    url.searchParams.set('id', item.id);
+    history.replaceState({ id: item.id }, '', url);
+  }
+
+  function closeDetail() {
+    detailView.classList.remove('active');
+    listView.style.display = '';
+    const url = new URL(window.location);
+    url.searchParams.delete('id');
+    history.pushState({}, '', url);
+  }
+
+  // ── Event listeners
+  backBtn.addEventListener('click', closeDetail);
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) { currentIndex--; showFlashcard(); }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < IDIOMS.length - 1) { currentIndex++; showFlashcard(); }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!detailView.classList.contains('active')) return;
+    if (e.key === 'ArrowLeft')  { if (currentIndex > 0) { currentIndex--; showFlashcard(); } }
+    if (e.key === 'ArrowRight') { if (currentIndex < IDIOMS.length - 1) { currentIndex++; showFlashcard(); } }
+    if (e.key === 'Escape')     closeDetail();
+  });
+
+  searchEl.addEventListener('input', () => {
+    const q = searchEl.value.trim().toLowerCase();
+    const filtered = q
+      ? IDIOMS.filter(i => i.en.toLowerCase().includes(q) || i.tr.toLowerCase().includes(q))
+      : IDIOMS;
+    renderGrid(filtered);
+  });
+
+  window.addEventListener('popstate', () => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    if (id) {
+      const idx = IDIOMS.findIndex(i => i.id === id);
+      if (idx !== -1) { currentIndex = idx; showFlashcard(); listView.style.display = 'none'; detailView.classList.add('active'); return; }
+    }
+    detailView.classList.remove('active');
+    listView.style.display = '';
+  });
+
+  // ── Init
+  (function init() {
+    renderGrid(IDIOMS);
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    if (id) {
+      const idx = IDIOMS.findIndex(i => i.id === id);
+      if (idx !== -1) {
+        currentIndex = idx;
+        showFlashcard();
+        listView.style.display = 'none';
+        detailView.classList.add('active');
+      }
+    }
+  })();
+</script>
+</body>
+</html>
